@@ -2,21 +2,7 @@ import express from 'express';
 import messageRoutes from '../src/routes/message.routes.js';
 import cors from 'cors';
 
-const allowedOrigins = [
-    "http://localhost:5173/",
-    "https://nocturne-black.vercel.app/"
-]
-
-const corsOptions = {
-    origin: function (origin, callback) {
-      if (allowedOrigins.indexOf(origin) !== -1 || !origin) { // Handle non-origin requests like from Postman
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-  };
-  
+const corsOptions = {origin: '*'}
 
 const app = express();
 app.use(cors(corsOptions));
