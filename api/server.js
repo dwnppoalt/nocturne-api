@@ -1,5 +1,4 @@
 import app from "../src/app.js";
+import serverless from "serverless-http";
 
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
-});
+export default serverless(app);
