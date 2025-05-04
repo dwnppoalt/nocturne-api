@@ -1,5 +1,5 @@
 import express from 'express';
-import messageRoutes from './routes/message.routes.js';
+import messageRoutes from '../src/routes/message.routes.js';
 
 const app = express();
 app.use(express.json());
