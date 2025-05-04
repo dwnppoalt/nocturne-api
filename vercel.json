@@ -2,16 +2,15 @@
     "version": 2,
     "builds": [
         {
-            "src": "src/server.js",
+            "src": "api/app.js",
             "use": "@vercel/node"
         }
     ],
     "rewrites": [
         {
             "source": "/(.*)",
-            "destination": "/src/server.js"
+            "destination": "/api/app.js"
         }
-    ],
-    "buildCommand": "npm install backblaze-b2"
+    ]
 }
  
