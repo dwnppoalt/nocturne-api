@@ -1,7 +1,6 @@
 import express from 'express';
 import messageRoutes from '../src/routes/message.routes.js';
-const cors = require('cors');
-
+import cors from 'cors';
 
 const corsOptions = {origin: '*',};
 
