@@ -7,7 +7,7 @@ messageRoutes.get('/', (req, res) => {
     res.status(200).json({ message: 'Hello, world!' });
 });
 
-messageRoutes.post('/create', createMessage, turnstileMiddleware);
+messageRoutes.post('/create', turnstileMiddleware, createMessage);
 messageRoutes.get('/search', searchMessages);
 messageRoutes.get('/random', getRandomMessages);
 
