@@ -1,5 +1,5 @@
 import express from 'express';
-import { createMessage, searchMessages, getRandomMessages } from '../controllers/message.controller.js';
+import { createMessage, searchMessages, getRandomMessages, getMessage } from '../controllers/message.controller.js';
 import turnstileMiddleware from '../middlewares/turnstile.middleware.js';
 const messageRoutes = express.Router();
 
@@ -10,5 +10,6 @@ messageRoutes.get('/', (req, res) => {
 messageRoutes.post('/create', turnstileMiddleware, createMessage);
 messageRoutes.get('/search', searchMessages);
 messageRoutes.get('/random', getRandomMessages);
+messageRoutes.get('/message/:id', getMessage);
 
 export default messageRoutes;

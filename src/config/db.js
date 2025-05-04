@@ -61,6 +61,13 @@ class Database {
             console.error('Error getting random messages:', error);
         }
     }
+
+    getNote(id) {
+        const query = `SELECT * FROM messages WHERE id = $1`;
+        return this.pool.query(query, [id])
+            .then(res => res.rows[0])
+            .catch(err => console.error('Error getting note:', err));
+    }
 }
 
 export default Database;
