@@ -42,13 +42,17 @@ class Database {
         }
     }
 
-    async searchMessages(searchTerm) {
-        const query = `SELECT * FROM messages WHERE message ILIKE $1 OR author ILIKE $1`;
+    async searchMessages(searchTerm, page = 1) {
+        const limit = 10;
+        const offset = (page - 1) * limit;
+        const query = `SELECT * FROM messages WHERE message ILIKE $1 OR author ILIKE $1 LIMIT $2 OFFSET $3`;
         try {
-            const res = await this.pool.query(query, [`%${searchTerm}%`]);
+            console.log(`Executing query: ${query} with values: [%${searchTerm}%, ${limit}, ${offset}]`);
+            const res = await this.pool.query(query, [`%${searchTerm}%`, limit, offset]);
             return res.rows;
         } catch (error) {
             console.error('Error searching messages:', error);
+            throw error; // Re-throw the error for better debugging
         }
     }
 
@@ -69,5 +73,10 @@ class Database {
             .catch(err => console.error('Error getting note:', err));
     }
 }
+
+(async () => {
+    const db = new Database();
+    console.log(await db.searchMessages('elle'));
+})();
 
 export default Database;

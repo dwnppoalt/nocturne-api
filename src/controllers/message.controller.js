@@ -14,9 +14,9 @@ export const createMessage = async (req, res) => {
 }
 
 export const searchMessages = async (req, res) => {
-    const { q } = req.query;
+    const { q, page } = req.query;
     try {
-        const messages = await db.searchMessages(q);
+        const messages = await db.searchMessages(q, page ?? 1);
         res.status(200).json(messages);
     } catch (error) {
         console.error("Error searching messages:", error);
