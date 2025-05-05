@@ -74,9 +74,4 @@ class Database {
     }
 }
 
-(async () => {
-    const db = new Database();
-    console.log(await db.searchMessages('elle'));
-})();
-
 export default Database;
